@@ -1,0 +1,20 @@
+<!Doctype HTML>
+
+<html>
+<h1 id = "header">This is a test Page </h1>
+<script src="/socket.io/socket.io.js"></script>
+<button id="clickme" onclick="sendData()">Click me</button>
+<script>
+var socket = io('/');
+socket.on('response', function(data) {
+  console.log("response recieved");
+    console.log(data);
+    document.getElementById("header").innerHTML = JSON.stringify(data);
+
+});
+function sendData(){
+  console.log("sending data");
+  socket.emit('event');
+}
+</script>
+</html>
